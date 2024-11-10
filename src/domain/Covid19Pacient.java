@@ -53,13 +53,14 @@ public class Covid19Pacient extends Observable {
 		symptoms.put(c,w);
 	}
 	
-	public void addSymptomByName(String symptomName, Integer weight) {
+	public Symptom addSymptomByName(String symptomName, Integer weight) {
 	        Symptom symptom = SymptomFactory.createSymptom(symptomName);
 	        if (symptom != null) {
 	            symptoms.put(symptom, weight);
 	        } else {
 	            System.out.println("Symptom " + symptomName + " could not be created.");
 	        }
+		return symptom;
 	    
     }
 
