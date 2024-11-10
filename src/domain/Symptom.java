@@ -1,6 +1,6 @@
 package domain;
 
-public class Symptom {
+public abstract class Symptom {
 	private String name;
 	private int covidImpact;
 	private int severityIndex;
@@ -32,4 +32,5 @@ public class Symptom {
 	public String toString() {
 		return name;
 	}
+	 public abstract String getType();
 }
