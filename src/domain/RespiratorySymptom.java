@@ -6,5 +6,8 @@ public class RespiratorySymptom extends Symptom{
 		super(name, covidImpact, severityIndex);
 		// TODO Auto-generated constructor stub
 	}
-
+ @Override
+    public String getType() {
+        return "Respiratory";
+    }
 }
