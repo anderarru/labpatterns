@@ -24,8 +24,8 @@ public class SemaphorGUI extends JFrame implements java.util.Observer {
 		Color c;
 		double current=p.covidImpact();
 		if (current<5)	c=Color.green;
-		else if (current<=10)	c=Color.yellow;
-		else if (current >10) c=Color.red;
+		else if (current<10)	c=Color.yellow;
+		else if (current =>10) c=Color.red;
 		else c = Color.white;
 		getContentPane().setBackground(c);
 		repaint();
