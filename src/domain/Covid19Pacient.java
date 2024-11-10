@@ -7,11 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Set;
-
 import iterator.Covid19PacientIterator;
 
-
-public class Covid19Pacient extends Observable{
+public class Covid19Pacient extends Observable {
 	private String  name; 
 	private int age;
 	private Map<Symptom,Integer> symptoms=new HashMap<Symptom,Integer>();
@@ -48,30 +46,33 @@ public class Covid19Pacient extends Observable{
 			s=i.next();
 			if (s!=null && s.getName().equals(symptomName)) return s;
 		}
-		return null;
-		
+		return null;	
 	}
 
 	public void addSymptom(Symptom c, Integer w){
 		symptoms.put(c,w);
 	}
 	
-	public Symptom addSymptomByName(String symptom, Integer w){
-		Symptom s=getSymptomByName(symptom);
-		if (s==null) {
-			s=createSymptom(symptom); 
-			symptoms.put(s,w);		
-		}
-		setChanged(); notifyObservers();
-		return s;
+	public Symptom addSymptomByName(String symptom, Integer w) {
+	    Symptom s = getSymptomByName(symptom);
+	    if (s == null) {
+	        s = createSymptom(symptom); 
+	        symptoms.put(s, w);
+	        setChanged(); 
+	        notifyObservers();
+	    }
+	    return s;
 	}
 
 	public Symptom removeSymptomByName(String symptomName) {
-		Symptom s=getSymptomByName(symptomName);
-		System.out.println("Simptom to remove: "+s);
-		if (s!=null) symptoms.remove(s);
-		setChanged(); notifyObservers();
-		return s;
+	    Symptom s = getSymptomByName(symptomName);
+	    System.out.println("Symptom to remove: " + s);
+	    if (s != null) {
+	        symptoms.remove(s);
+	        setChanged(); 
+	        notifyObservers();
+	    }
+	    return s;
 	}
 	public Iterator iterator() {
 		return new Covid19PacientIterator(this.symptoms.keySet());
